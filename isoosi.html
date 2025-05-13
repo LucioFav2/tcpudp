@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modello ISO/OSI Interattivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+        }
+        
+        .layer {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .layer:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .layer.active {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .info-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .info-panel.active {
+            max-height: 500px;
+        }
+        
+        .highlight-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(66, 153, 225, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(66, 153, 225, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(66, 153, 225, 0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pyramid-container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            
+            .layer {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Modello ISO/OSI</h1>
+            <p class="text-gray-600 text-lg">Diagramma interattivo dei 7 livelli</p>
+        </header>
+        
+        <div class="flex flex-col md:flex-row gap-6">
+            <div class="pyramid-container w-full md:w-1/2 flex flex-col gap-3">
+                <!-- Livello 7: Applicazione -->
+                <div id="layer7" class="layer rounded-lg bg-indigo-500 text-white p-4 w-full md:w-[120%]" style="margin-left: 0%;">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold">7. Livello Applicazione</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Livello 6: Presentazione -->
+                <div id="layer6" class="layer rounded-lg bg-blue-500 text-white p-4 w-full md:w-[115%]" style="margin-left: 0%;">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold">6. Livello Presentazione</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Livello 5: Sessione -->
+                <div id="layer5" class="layer rounded-lg bg-cyan-500 text-white p-4 w-full md:w-[110%]" style="margin-left: 0%;">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold">5. Livello Sessione</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Livello 4: Trasporto (evidenziato) -->
+                <div id="layer4" class="layer rounded-lg bg-teal-500 text-white p-4 w-full md:w-[105%] highlight-pulse border-2 border-blue-400" style="margin-left: 0%;">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold">4. Livello Trasporto</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Livello 3: Rete -->
+                <div id="layer3" class="layer rounded-lg bg-green-500 text-white p-4 w-full" style="margin-left: 0%;">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold">3. Livello Rete</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Livello 2: Collegamento Dati -->
+                <div id="layer2" class="layer rounded-lg bg-yellow-500 text-white p-4 w-full md:w-11/12" style="margin-left: 0%;">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold">2. Livello Collegamento Dati</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Livello 1: Fisico -->
+                <div id="layer1" class="layer rounded-lg bg-orange-500 text-white p-4 w-full md:w-5/6" style="margin-left: 0%;">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold">1. Livello Fisico</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-container w-full md:w-1/2 bg-white rounded-xl shadow-lg p-6 h-fit sticky top-4">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4" id="info-title">Modello ISO/OSI</h3>
+                <div id="info-content" class="prose">
+                    <p class="text-gray-600">Seleziona un livello della piramide per visualizzare le informazioni dettagliate.</p>
+                    <p class="mt-4 text-gray-500">Il modello OSI (Open Systems Interconnection) è un modello concettuale creato dall'International Organization for Standardization che consente diverse modalità di comunicazione tra sistemi diversi.</p>
+                    <p class="mt-2 text-gray-500">La piramide rappresenta visivamente l'incapsulamento dei dati: ogni livello aggiunge le proprie informazioni di controllo ai dati ricevuti dal livello superiore, rendendo i pacchetti più grandi man mano che si scende verso i livelli inferiori.</p>
+                </div>
+                
+                <!-- Pannelli informativi per ogni livello (inizialmente nascosti) -->
+                <div id="info-panel-7" class="info-panel">
+                    <p class="text-gray-700 mb-4">Il livello Applicazione è l'interfaccia diretta tra il software applicativo e la rete. Fornisce servizi di rete alle applicazioni dell'utente.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">HTTP/HTTPS</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">FTP</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">SMTP</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">DNS</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">Telnet</span>
+                    </div>
+                    <p class="text-gray-600">Questo livello gestisce l'identificazione e la disponibilità dei partner di comunicazione, l'autenticazione degli utenti e la verifica della disponibilità delle risorse richieste.</p>
+                </div>
+                
+                <div id="info-panel-6" class="info-panel">
+                    <p class="text-gray-700 mb-4">Il livello Presentazione si occupa della sintassi e della semantica delle informazioni trasmesse. Traduce i dati tra il formato richiesto dall'applicazione e il formato comune di rete.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Crittografia</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Compressione</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Codifica</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">ASCII/EBCDIC</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">JPEG/GIF</span>
+                    </div>
+                    <p class="text-gray-600">Gestisce la conversione dei protocolli, la crittografia dei dati, la compressione e la formattazione per garantire che i dati inviati da un sistema possano essere letti correttamente da un altro.</p>
+                </div>
+                
+                <div id="info-panel-5" class="info-panel">
+                    <p class="text-gray-700 mb-4">Il livello Sessione stabilisce, gestisce e termina le connessioni (sessioni) tra applicazioni locali e remote. Fornisce servizi di sincronizzazione del dialogo.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Gestione sessione</span>
+                        <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Controllo dialogo</span>
+                        <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Sincronizzazione</span>
+                        <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">RPC</span>
+                        <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">NetBIOS</span>
+                    </div>
+                    <p class="text-gray-600">Questo livello gestisce i checkpoint per il recupero in caso di errori e controlla quale entità può trasmettere in un determinato momento durante la comunicazione.</p>
+                </div>
+                
+                <div id="info-panel-4" class="info-panel">
+                    <p class="text-gray-700 mb-4">Il livello Trasporto fornisce il trasferimento trasparente di dati tra sistemi finali, garantendo l'affidabilità del servizio di comunicazione. Gestisce la segmentazione, il controllo di flusso e la correzione degli errori.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">TCP</span>
+                        <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">UDP</span>
+                        <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">Segmentazione</span>
+                        <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">Controllo flusso</span>
+                    </div>
+                    <p class="text-gray-600">Il protocollo UDP (User Datagram Protocol) è caratterizzato per essere:</p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Veloce</span>
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Non affidabile</span>
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Senza connessione</span>
+                    </div>
+                </div>
+                
+                <div id="info-panel-3" class="info-panel">
+                    <p class="text-gray-700 mb-4">Il livello Rete fornisce funzionalità di routing e indirizzamento per trasferire pacchetti di dati da una rete all'altra. Determina il percorso ottimale attraverso la rete.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">IP</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Routing</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">ICMP</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">IPsec</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">NAT</span>
+                    </div>
+                    <p class="text-gray-600">Gestisce la congestione di rete, la qualità del servizio (QoS) e l'indirizzamento logico. I router operano a questo livello per instradare i pacchetti attraverso percorsi ottimali.</p>
+                </div>
+                
+                <div id="info-panel-2" class="info-panel">
+                    <p class="text-gray-700 mb-4">Il livello Collegamento Dati fornisce il trasferimento affidabile di dati attraverso un collegamento fisico. Si occupa dell'indirizzamento fisico, della topologia di rete e dell'accesso al mezzo.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Ethernet</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">MAC</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">PPP</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Switch</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Frame</span>
+                    </div>
+                    <p class="text-gray-600">Questo livello è responsabile della rilevazione e correzione degli errori che possono verificarsi nel livello fisico. Organizza i bit in frame e gestisce il controllo di flusso tra dispositivi.</p>
+                </div>
+                
+                <div id="info-panel-1" class="info-panel">
+                    <p class="text-gray-700 mb-4">Il livello Fisico definisce le specifiche elettriche, meccaniche, procedurali e funzionali per attivare, mantenere e disattivare il collegamento fisico tra sistemi.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Cavi</span>
+                        <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Hub</span>
+                        <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Repeater</span>
+                        <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Bit</span>
+                        <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Segnali</span>
+                    </div>
+                    <p class="text-gray-600">Si occupa della trasmissione e ricezione del flusso di bit non strutturato attraverso un mezzo fisico. Definisce caratteristiche come livelli di tensione, temporizzazione delle variazioni di tensione, velocità di trasmissione e distanze massime di trasmissione.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="mt-12 text-center text-gray-500 text-sm">
+            <p>Modello ISO/OSI - Diagramma Interattivo</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const layers = document.querySelectorAll('.layer');
+            const infoPanels = document.querySelectorAll('.info-panel');
+            const infoTitle = document.getElementById('info-title');
+            const infoContent = document.getElementById('info-content');
+            
+            layers.forEach(layer => {
+                layer.addEventListener('click', function() {
+                    const layerId = this.id;
+                    const layerNumber = layerId.replace('layer', '');
+                    const infoPanel = document.getElementById(`info-panel-${layerNumber}`);
+                    
+                    // Rimuovi la classe active da tutti i livelli
+                    layers.forEach(l => l.classList.remove('active'));
+                    
+                    // Nascondi tutti i pannelli informativi
+                    infoPanels.forEach(panel => {
+                        panel.classList.remove('active');
+                    });
+                    
+                    // Aggiungi la classe active al livello cliccato
+                    this.classList.add('active');
+                    
+                    // Mostra il pannello informativo corrispondente
+                    if (infoPanel) {
+                        infoPanel.classList.add('active');
+                        
+                        // Aggiorna il titolo
+                        const layerTitle = this.querySelector('h2').textContent;
+                        infoTitle.textContent = layerTitle;
+                        
+                        // Nascondi il contenuto predefinito
+                        infoContent.style.display = 'none';
+                    }
+                    
+                    // Ruota l'icona chevron
+                    const chevron = this.querySelector('.chevron');
+                    chevron.style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
